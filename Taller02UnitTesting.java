@@ -10,11 +10,9 @@ public class Taller02UnitTesting {
         double hora_mayor = 0;
         double temp = 0;
         for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[i][j] > array[i][j + 1]) {
+            for (int j = 0; j < array[i].length - i - 1; j++) {
+                if (array[i][j] > temp) {
                     temp = array[i][j];
-                    array[i][j] = array[i][j + 1];
-                    array[i][j + 1] = temp;
                     dia_mayor = i;
                     hora_mayor = j;
                 }
