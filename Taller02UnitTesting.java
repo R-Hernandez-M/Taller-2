@@ -4,31 +4,23 @@ import java.util.Scanner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 public class Taller02UnitTesting {
-    public static int encontrar_mayor(int[] array) {
-        int dia_mayor;
-        int hora_mayor;
-        int temp;
-        int mayor;
+    public static double[] encontrar_mayor(double[][] array) {
+        double dia_mayor;
+        double hora_mayor;
+        double temp;
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
+                if (array[i][j] > array[i][j + 1]) {
+                    temp = array[i][j];
+                    array[i][j] = array[i][j + 1];
+                    array[i][j + 1] = temp;
                     dia_mayor = i;
                     hora_mayor = j;
-                    mayor=array[j];
-
                 }
-                array[j + 1] = temp;
-                dia_mayor = i+1;
-                hora_mayor = j+1;
-
             }
         }
-
-
-        return dia_mayor;
+        double mayores[] = {temp, dia_mayor, hora_mayor};
+        return mayores;
     }
 
 
@@ -64,10 +56,42 @@ public class Taller02UnitTesting {
                 System.out.println(j);
                 registrosSismicos[i][j] = Math.random() * 9.5;
             }
+=======
+    public static int encontrar_mayor(int[] array) {
+        int dia_mayor;
+        int hora_mayor;
+        int temp;
+        int mayor;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    dia_mayor = i;
+                    hora_mayor = j;
+                    mayor=array[j];
 
-        }
-        return registrosSismicos;
+
     }
+    public static void menu(double[][] array){
+        Scanner sn = new Scanner(System.in);
+        boolean salir = false;
+        int opcion; //Guardaremos la opcion del usuario
 
-}
 
+
+        while(!salir){
+
+
+            System.out.println("1. Opcion 1");
+            System.out.println("2. Opcion 2");
+            System.out.println("3. Opcion 3");
+            System.out.println("4. Salir");
+
+            System.out.println("Escribe una de las opciones");
+            opcion = sn.nextInt();
+            if (opcion==1){
+                System.out.printf("el sismo de mayor magnitud fue %d \n"+)
+            }
+        }
