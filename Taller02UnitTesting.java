@@ -56,42 +56,33 @@ public class Taller02UnitTesting {
                 System.out.println(j);
                 registrosSismicos[i][j] = Math.random() * 9.5;
             }
-
-        }
-        return registrosSismicos;
-    }
-
-    public static int sismos_fuertes(double[][] array) {
-        int contador = 0;
+=======
+    public static int encontrar_mayor(int[] array) {
+        int dia_mayor;
+        int hora_mayor;
+        int temp;
+        int mayor;
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[i][j] >= 5.5){
-                    contador++;
-                }
-            }
-        }
-        return contador;
-    }
+                if (array[j] > array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                    dia_mayor = i;
+                    hora_mayor = j;
+                    mayor=array[j];
 
-    public static void escalada_sismica(double[][] array) {
-        int yay=0;
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[i][j] >= 6){
-                    yay++;
-                    if (yay>=4){
-                        System.out.println("hubo una escalada sismica el dia "+i);
-                    }
-                }
-            }
-        }
+
     }
     public static void menu(double[][] array){
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
 
+
+
         while(!salir){
+
 
             System.out.println("1. Opcion 1");
             System.out.println("2. Opcion 2");
@@ -104,7 +95,3 @@ public class Taller02UnitTesting {
                 System.out.printf("el sismo de mayor magnitud fue %d \n"+)
             }
         }
-
-    }
-
-}
