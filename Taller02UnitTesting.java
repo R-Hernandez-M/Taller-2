@@ -13,7 +13,7 @@ public class Taller02UnitTesting {
             for (int j = 0; j < array[i].length - i - 1; j++) {
                 if (array[i][j] > temp) {
                     temp = array[i][j];
-                    dia_mayor = i;
+                    dia_mayor = i+1;
                     hora_mayor = j;
                 }
             }
