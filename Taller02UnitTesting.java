@@ -121,7 +121,7 @@ public class Taller02UnitTesting {
                 escalada_sismica(generador_arreglo());
             } else if (opcion == 4)
                 System.out.println("saliendo del sistema, gracias por utilizar nuestro programa");
-            salir = true;
+                salir = true;
         }
 
 
