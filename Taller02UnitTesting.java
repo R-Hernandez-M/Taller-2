@@ -19,7 +19,7 @@ public class Taller02UnitTesting {
                 }
             }
         }
-        double mayores[]={temp,dia_mayor,hora_mayor};
+        double mayores[] = {temp, dia_mayor, hora_mayor};
         return mayores;
     }
 
@@ -61,6 +61,50 @@ public class Taller02UnitTesting {
         return registrosSismicos;
     }
 
-    public static int 
-}
+    public static int sismos_fuertes(double[][] array) {
+        int contador = 0;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[i][j] >= 5.5){
+                    contador++;
+                }
+            }
+        }
+        return contador;
+    }
 
+    public static void escalada_sismica(double[][] array) {
+        int yay=0;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[i][j] >= 6){
+                    yay++;
+                    if (yay>=4){
+                        System.out.println("hubo una escalada sismica el dia "+i);
+                    }
+                }
+            }
+        }
+    }
+    public static void menu(double[][] array){
+        Scanner sn = new Scanner(System.in);
+        boolean salir = false;
+        int opcion; //Guardaremos la opcion del usuario
+
+        while(!salir){
+
+            System.out.println("1. Opcion 1");
+            System.out.println("2. Opcion 2");
+            System.out.println("3. Opcion 3");
+            System.out.println("4. Salir");
+
+            System.out.println("Escribe una de las opciones");
+            opcion = sn.nextInt();
+            if (opcion==1){
+                System.out.printf("el sismo de mayor magnitud fue %d \n"+)
+            }
+        }
+
+    }
+
+}
