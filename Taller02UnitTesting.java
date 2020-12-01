@@ -1,13 +1,14 @@
 import org.junit.Test;
 import java.lang.Math;
+import java.text.BreakIterator;
 import java.util.Scanner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 public class Taller02UnitTesting {
     public static double[] encontrar_mayor(double[][] array) {
-        double dia_mayor;
-        double hora_mayor;
-        double temp;
+        double dia_mayor = 0;
+        double hora_mayor = 0;
+        double temp = 0;
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
                 if (array[i][j] > array[i][j + 1]) {
@@ -25,7 +26,7 @@ public class Taller02UnitTesting {
 
 
     public static void main(String[] args) {
-        generador_arreglo();
+        menu();
     }
 
     public static double[][] generador_arreglo() {
@@ -56,42 +57,73 @@ public class Taller02UnitTesting {
                 System.out.println(j);
                 registrosSismicos[i][j] = Math.random() * 9.5;
             }
-=======
-    public static int encontrar_mayor(int[] array) {
-        int dia_mayor;
-        int hora_mayor;
-        int temp;
-        int mayor;
+
+        }
+        return registrosSismicos;
+    }
+
+    public static int sismos_fuertes(double[][] array) {
+        int contador = 0;
         for (int i = 0; i < array.length - 1; i++) {
             for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                    dia_mayor = i;
-                    hora_mayor = j;
-                    mayor=array[j];
-
-
+                if (array[i][j] >= 5.5) {
+                    contador++;
+                }
+            }
+        }
+        return contador;
     }
-    public static void menu(double[][] array){
+
+    public static Boolean escalada_sismica(double[][] array) {
+        int yay = 0;
+        boolean sismos_brigidos = false;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[i][j] >= 6) {
+                    yay++;
+                    if (yay >= 4) {
+                        System.out.println("hubo una escalada sismica el dia " + i);
+                        sismos_brigidos = true;
+                    } else {
+                        sismos_brigidos = false;
+                    }
+                }
+            }
+        }
+        return sismos_brigidos;
+    }
+
+    public static void menu() {
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
 
+        while (!salir) {
 
-
-        while(!salir){
-
-
-            System.out.println("1. Opcion 1");
-            System.out.println("2. Opcion 2");
-            System.out.println("3. Opcion 3");
+            System.out.println("1. encontrar mayor 1");
+            System.out.println("2. sismo mayor 2");
+            System.out.println("3. escaladas sismicas 3");
             System.out.println("4. Salir");
 
             System.out.println("Escribe una de las opciones");
             opcion = sn.nextInt();
-            if (opcion==1){
-                System.out.printf("el sismo de mayor magnitud fue %d \n"+)
-            }
+            if (opcion == 1) {
+                double[] datos = encontrar_mayor(generador_arreglo());
+                double big_sismo = datos[0];
+                double big_dia = datos[1];
+                double big_hora = datos[2];
+                System.out.printf("el sismo de mayor magnitud fue %f%n \n" + "el dia %f%n \n" + "en la hora %f%n", big_sismo, big_dia, big_hora);
+            } else if (opcion == 2) {
+                int poder = sismos_fuertes(generador_arreglo());
+                System.out.printf("se registraron %d%n dias donde hubo un sismo mayor a 5.5 en la escala de Richter\n", poder);
+
+            } else if (opcion == 3) {
+                escalada_sismica(generador_arreglo());
+            } else if (opcion == 4)
+                System.out.println("saliendo del sistema, gracias por utilizar nuestro programa");
+            salir = true;
         }
+
+
+    }
+}
